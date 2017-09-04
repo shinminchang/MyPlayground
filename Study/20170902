@@ -26,6 +26,27 @@
     * ++i와 i++의 차이
       ++i = 1이 이미 더해진 값으로 계산
       i++ = 이 위치를 지나야 1을 더한값으로 계산
+
+  - 소스 (수정)
+    var i = -1;
+
+    class push(String pushItem){
+      if (++i >= 10){
+        system.out.println("overflow !!!");
+        return false;
+      }
+
+      stack[++i] = pushItem;
+    }
+
+    class pop(){
+      if (i < 0){
+        system.out.println("underflow !!!");
+        return false;
+      }
+
+      stack[--i] = "";
+    }
       
 2. python 문법
   - class 선언
