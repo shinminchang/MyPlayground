@@ -40,11 +40,39 @@
     print('aaa')
     
 3. nginx 설치 후 웹 사이트와 연동
+  - nginx 설치
+    brew install nginx
+  - conf 파일 설정
+    server
+    {
+	listen 80;
+	server_name aft.com;
+
+	access_log /var/log/nginx/hulk-access.log;
+	error_log /var/log/nginx/hulk-error.log; # debug;
+
+	rewrite_log on;
+
+	location / {
+	   add_header 'Access-Control-Allow-Origin' '*';
+	   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	   proxy_pass http://localhost:3000/;
+        }
+    }
+
+4. bash_profile에 alias등록
+    alias nginx.start='sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'
+    alias nginx.stop='sudo launchctl unload /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'
+    alias nginx.restart='nginx.stop && nginx.start'
     
-    
-    
-    
-    
+
+
+* 메모
+  - 앞단 소스 변경시
+    ng build --watch
+  - ansible (소스 자동배포 프로그램)
+    윈도우 지원하는지    
+  - pycharm pro 설치
     
     
     
