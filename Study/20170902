@@ -1,1 +1,63 @@
-
+1. 알고리즘
+  - 스택 (LIFO 구조)
+    함수를 재귀호출할때 스택에 하나씩 쌓이게된다.
+  
+  - 소스
+    class push(String pushItem){
+      var leng_stack = stack.length();
+      
+      if (leng_stack < 11){
+        stack[length_stack] = pushItem;
+      } else {
+        system.out.println("overflow");
+      }
+    }
+    
+    class pop() {
+      var length_stack = stack.length();
+      
+      if (length_stack > 0){
+        stack[length_stack-1] = "";
+      } else {
+        system.out.println("underflow");
+      }
+    }
+    
+    * ++i와 i++의 차이
+      ++i = 1이 이미 더해진 값으로 계산
+      i++ = 이 위치를 지나야 1을 더한값으로 계산
+      
+2. python 문법
+  - class 선언
+    class myTest() :
+  - fynction 선언
+    def myTest() :
+  - if 문
+    if "aaa" and "bbb" or "ccc" :
+  - for 문
+    for a range b :
+  - 출력
+    print('aaa')
+    
+3. nginx 설치 후 웹 사이트와 연동
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
