@@ -1,0 +1,26 @@
+1. 알고리즘
+   - 큐
+     인큐
+     데큐
+
+     class queue() {
+        int array[];
+        int size = 0;
+
+        queue () {
+            array[] = [10];
+        }
+
+        public int dequeue() {
+            for (i=0; i<size; i++;){
+                array[i] = array[size+1];
+            }
+            // 값을 하나 제거해서 빼줌
+            size--;
+        }
+     }
+
+2. Angular
+   1) 개발해볼 웹사이트
+      - Angular로 앞단 작업 Node.js랑 nginx로 DB 구축
+      - 캘린더랑 테이블을 이용한 간단한 메모장 만들기
