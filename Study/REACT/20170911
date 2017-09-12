@@ -1,0 +1,27 @@
+1. React 컴포넌트 작성
+    class Codelab extends React.Component{
+      render(){
+        let text = "Hi i am codelab";
+        let style = {
+          backgroundColor:'aqua'
+        };
+
+        return(
+          <div style={style}>{text}</div>
+        );
+      }
+    }
+
+    class App extends React.Component{
+      render(){
+        return(
+          <Codelab></Codelab>
+        );
+      }
+    }
+
+    ReactDOM.render(<App/>, document.getElementById("root"));
+
+    // Hi i am codelab
+
+2. Props
