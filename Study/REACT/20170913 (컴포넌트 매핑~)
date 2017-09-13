@@ -1,0 +1,4 @@
+1. 컴포넌트 매핑
+    1) javascript - map
+        파라미터로 전달 된 함수를 통하여 배열 내의 각 요소를 처리해서 새로운 배열을 생성한다.
+        arr.map(callback, [thisArg])

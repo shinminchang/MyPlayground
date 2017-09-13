@@ -1,0 +1,279 @@
+1. JSX
+    1) XML 형식의 코드를 native Javascript로 변환해줌
+        import React from 'react';
+
+        class App extends React.Component {
+            render(){
+                return (
+                    <H1> Hello Velopert </H1>
+                );
+            }
+        }
+
+        export default App;
+
+    2) 여러 Element를 렌더링 해야 할 때, element들을 필수적으로 container element 안에 포함시켜줘야됨
+      return (
+        <H1> Hello Velopert </H1>
+        <H2> Welcome </H2>
+      );
+
+    3) 자바스크립트 표현식
+      render() {
+        let text = "Dev-Server"
+        return (
+            <div>
+                <H1> Hello Velopert </H1>
+                <H2> Welcome to {text} </H2>
+            </div>
+        );
+      }
+
+      * var, let 차이
+        - var
+        var emotion = "happy";
+        {
+           var emotion = "sad";
+        }
+        console.log(emotion);
+
+        - let
+        var emotion2 = "sad";
+        {
+            let emotion2 = "happy";
+            console.log(emotion2);
+        }
+        console.log(emotion2);
+
+    4) IF - ELSE 문
+       ternary (condition ? true : false)
+       ex) <p> {1 == 1 ? 'True' : 'False'} </p>
+
+    5) 주석
+       {/* comments */}
+
+    6) Naming Convention
+       CamelCase : 첫 문자를 대문자로 작성
+
+2. Component 생성 및 모듈화
+    1) import React from 'react';
+           class App extends React.Component {
+               render(){
+                   return  (
+                       <div>
+                           <Header/>
+                           <Content/>
+                       </div>
+                   );
+               }
+           }
+
+           class Header extends React.Component {
+               render(){
+                   return (
+                       <h1>Header</h1>
+                   );
+               }
+           }
+
+           class Content extends React.Component {
+               render(){
+                   return (
+                       <div>
+                           <h2>Content</h2>
+                           <p> Hey! </p>
+                       </div>
+                   );
+               }
+           }
+
+           export default App;
+
+    2) import React from 'react';
+       import Header from './Header';
+       import Content from './Content';
+
+       class App extends React.Component {
+           render(){
+               return  (
+                   <div>
+                       <Header/>
+                       <Content/>
+                   </div>
+               );
+           }
+       }
+
+       export default App;
+
+3. Props
+    - 컴포넌트에서 사용 할 데이터 중 변동되지 않는 데이터를 다룰 떄 사용됩니다
+    - parent 컴포넌트에서 child 컴포넌트로 데이터를 전할때 사용된다
+
+    1) class Codelab extends React.Component{
+         render(){
+           let text = "Hi i am codelab";
+           let style = {
+             backgroundColor:'aqua'
+           };
+
+           return(
+             <div style={style}>{text}</div>
+           );
+         }
+       }
+
+       class App extends React.Component{
+         render(){
+           return(
+             <Codelab></Codelab>
+           );
+         }
+       }
+
+       ReactDOM.render(<App/>, document.getElementById("root"));
+
+    2) class Codelab extends React.Component{
+         render(){
+           return(
+             <div>
+               <h1>Hello{this.props.name}</h1>
+               <div>{this.props.children}</div>
+             </div>
+           );
+         }
+       }
+
+       class App extends React.Component {
+         render() {
+           return (
+             <Codelab name={this.props.name}>{this.props.children}</Codelab>
+           );
+         }
+       }
+
+       ReactDOM.render(<App name=" 신민창"> 새끼프롭스 </App>, document.getElementById('root'));
+
+    3) class Codelab extends React.Component {
+           render() {
+               return (
+                   <div>
+                       <h1>Hello {this.props.name}</h1>
+                       <h2>{this.props.number}</h2>
+                       <div>{this.props.children}</div>
+                   </div>
+               )
+           }
+       }
+
+       // 변수의 기본값 설정
+       Codelab.defaultProps = {
+           name: "Unknown"
+       };
+
+       // 변수의 형을 정함
+       Codelab.propTypes = {
+           number: React.PropTypes.number.isRequired, // 필수값 처리
+           name: React.PropTypes.string
+       }
+
+       class App extends React.Component {
+           render() {
+               return (
+                   <Codelab name={this.props.name} number={this.props.number}>{this.props.children}</Codelab>
+               );
+           }
+       }
+
+       ReactDOM.render(
+           <App number={555}> children : ggg </App>, document.getElementById("root")
+       );
+
+4. State
+   - 유동적인 데이터를 다룰때 사용
+   - 생성자에서 초기값 설정을 해줘야됨
+   - 값 수정시 this.setState({...}), 렌더링 된 다음엔 this.sate = 를 절대 사용하지 말것
+
+   class Counter extends React.Component{
+       constructor(props) {
+         super(props);
+         this.state = {
+           value:0
+         };
+
+         this.handleClick = this.handleClick.bind(this);
+       }
+
+       handleClick(){
+         // 프로세스를 통하여 값이 변경된 후 랜더링을 다시함
+         this.setState({
+           value:this.state.value + 1
+         });
+
+         //this.state.value = this.state.value + 1;
+         //this.forceUpdate();
+       }
+
+       render() {
+         return(
+           <div>
+             <h2>{this.state.value}</h2>
+             <button onClick={this.handleClick}>Press Me</button>
+           </div>
+         )
+       }
+   }
+
+     class App extends React.Component {
+       render() {
+         return (
+           <Counter></Counter>
+         );
+       }
+     };
+
+     ReactDOM.render(<App></App>,document.getElementById("root"));
+
+5. axios(react에서의 비동기식 전송방법)
+   - axios 사용법
+     1) axios.get('/users', {
+          params: {
+            id: 1
+          }
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+        });
+
+     2) axios({
+         method: 'get',
+         url: '/users',
+         params: {
+           id: 1
+         }
+       })
+       .then(function (response) {
+         console.log(response);
+       })
+       .catch(function (error) {
+       });
+
+   - response 값 형태
+    {
+      // `data` 는 서버에서 반환한 데이터입니다.
+      data: {},
+
+      // `status` 는 서버에서 반환한 HTTP 상태입니다
+      status: 200,
+
+      // `statusText` 는 HTTP 상태 메시지입니다
+      statusText: 'OK',
+
+      // `headers` 는 서버에서 반환한 헤더값입니다
+      headers: {},
+
+      // `config` 는 axios 요청시 전달했던 설정값입니다
+      config: {}
+    }
