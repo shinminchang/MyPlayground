@@ -1,4 +1,64 @@
 1. 컴포넌트 매핑
     1) javascript - map
-        파라미터로 전달 된 함수를 통하여 배열 내의 각 요소를 처리해서 새로운 배열을 생성한다.
-        arr.map(callback, [thisArg])
+        - 파라미터로 전달 된 함수를 통하여 배열 내의 각 요소를 처리해서 새로운 배열을 생성한다.
+        - arr.map(callback, [thisArg])
+          - callback : 새로운 배열의 요소를 생성하는 함수로써 다음 세가지 인수를 가진다.
+            1) currentValue : 현재 처리되고 있는 요소
+            2) index : 현재 처리되고 있는 요소의 index 값
+            3) array : 메소드가 불려진 배열
+          - thisArg(선택항목) : callback 함수 내부에서 사용 할 this 값을 설정
+
+    2) 예제
+        class ContactInfo extends React.Component {
+            render() {
+                return (
+                    <div>{this.props.contact.name} {this.props.contact.phone}</div>
+                )
+            }
+        };
+
+        class Contact extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    contactData: [{
+                        name: 'Abet',
+                        phone: '010-0000-0001'
+                    }, {
+                        name: 'Betty',
+                        phone: '010-0000-0002'
+                    }, {
+                        name: 'Charlie',
+                        phone: '010-0000-0003'
+                    }, {
+                        name: 'David',
+                        phone: '010-0000-0004'
+                    }]
+                };
+            }
+
+            render() {
+                const mapToComponents = (data) => {
+                    return data.map((contact, i) => {
+                        return (<ContactInfo contact={contact} key={i}/>);
+                    })
+                }
+
+                return (
+                    <div>
+                        <h1>Contacts</h1>
+                        <div>{mapToComponents(this.state.contactData)}</div>
+                        </div>
+                    )
+                }
+            };
+
+        class App extends React.Component {
+            render() {
+                return (
+                    <Contact/>
+                );
+            }
+        };
+
+        ReactDOM.render(<App></App>,document.getElementById("root"));

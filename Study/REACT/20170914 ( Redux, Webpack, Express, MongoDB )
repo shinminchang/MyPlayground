@@ -1,0 +1,42 @@
+1. Redux?
+    - Flux 아키텍처를 구현한 라이브러리
+    - 컴포넌트들 끼리 데이터 교류 및 state 관리를 쉽고 효율적으로 할수있도록 해주는 라이브러리
+
+2. Flux?
+    - 일종의 아이디어, 추상적인 개념
+
+3. 기존의 MVC와 Fulx 비교
+    - Action -> Controller -> Model <=> View
+        Action이 입력되면 컨트롤러는 모델이 갖고있는 데이터를 조회하거나 업데이트 하고 뷰에 반영됨
+        뷰에서 모델의 데이터에 접근하여 업데이트가 가능
+
+    - 모델과 뷰가 여러개가 될경우 => Flux를 사용
+        Action -> Dispatcher -> Store -> View
+        Action : 어떤걸 업데이트 해야될지 메세지를 보내면 액션 형태로 만들어서 디스페쳐로 보내줌
+        Dispatcher : 액션을 읽고 어떤부분을 업데이트 할지 정해줌 (동기식)
+        Store : 모든 상태와 관련된 로직을 갖고 있음
+        View : 화면을 보여줌
+
+        액션이 발생하면 디스페처가 그 액션들을 통제해서 스토어로 작업요청을 보낸다음 뷰로 랜더링을 해줌
+        뷰에서 액션이 생기는 경우 바로 스토어로 요청을 하는 구조가 아닌 디스페처로 작업요청을 보내서
+        디스페처가 다시 통제해서 스토어로 작업요청을 보낸후 뷰로 리랜더링을 하는 프로세스
+        * reducer : action이 발생하면 해당 객체를 받아서 처리하는 함수
+
+4. Express?
+    - 웹 어플리케이션을 만들때 필요한 많은 기능들이 이미 구현되어 있는 웹 프레임워크
+      var express = require('express');
+      var app = express();
+
+      app.get('/', function(req, res){
+        res.send('Hello World');
+      });
+
+      app.listen(3000, function(){
+        console.log('Example App is listening on port 3000');
+      });
+
+5. MongoDB?
+    - NoSQL : Not Only SQL이라는 의미로 기존의 관계형 DB의 한계를 극복하기 위해 만들어진 새로운 형태의 DB
+    - Document : MongoDB의 Document는 Key, Value 형식의 json 형태로 구성 되어있음
+    - Collection : Document 그룹, table과 비슷한 개념
+    - Database : Collection들을 감싸고 있는 컨테이너
