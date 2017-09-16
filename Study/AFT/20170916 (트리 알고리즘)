@@ -1,0 +1,58 @@
+1. 이진트리
+    자기자신의 정보와 왼쪽, 오른쪽 정보를 가져야됨
+
+    class Node {
+        int x;
+        Node left;
+        Node right;
+    }
+
+    class BT(){
+        Node root = new Node();
+
+        class insertNode(root, Int Value) {
+            Node pointNode = root;
+            Node newNode = new Node();
+            newNode.x = Value;
+            newNode.left = null;
+            newNode.right = null;
+
+            // 포인터가 비어있는경우
+            if (pointerNode == null){
+                pointerNode.x = insertNode(newNode);
+
+                return false;
+            } else if (pointerNode.x >= Vlaue) {
+                pointerNode.x =
+
+                return false;
+            } else if (pointerNode.x <= Value){
+                pointerNode.right = newNode;
+                pointerNode.right.x = Value;
+
+                return false;
+            }
+
+            // 포인터가 노드값보다 큰경우
+            // 포인터가 노드값보다 작은경우
+            // 그외의 경우 insertNode를 다시 호출
+
+           /*
+           if (root != null{
+
+
+           }
+
+           if (root == null){
+                root = Node;
+                return false;
+           } else if (right == null){
+                right = Node;
+                return false;
+           } else if (left == null){
+                left = Node;
+                return false;
+           }
+           */
+        }
+    }
