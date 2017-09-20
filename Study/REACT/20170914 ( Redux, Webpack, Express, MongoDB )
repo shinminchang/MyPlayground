@@ -7,23 +7,29 @@
 
 3. 기존의 MVC와 Fulx 비교
     - Action -> Controller -> Model <=> View
-        Action이 입력되면 컨트롤러는 모델이 갖고있는 데이터를 조회하거나 업데이트 하고 뷰에 반영됨
-        뷰에서 모델의 데이터에 접근하여 업데이트가 가능
+
+      Action이 입력되면 컨트롤러는 모델이 갖고있는 데이터를 조회하거나 업데이트 하고 뷰에 반영됨
+      뷰에서 모델의 데이터에 접근하여 업데이트가 가능
 
     - 모델과 뷰가 여러개가 될경우 => Flux를 사용
-        Action -> Dispatcher -> Store -> View
-        Action : 어떤걸 업데이트 해야될지 메세지를 보내면 액션 형태로 만들어서 디스페쳐로 보내줌
-        Dispatcher : 액션을 읽고 어떤부분을 업데이트 할지 정해줌 (동기식)
-        Store : 모든 상태와 관련된 로직을 갖고 있음
-        View : 화면을 보여줌
+      Action -> Dispatcher -> Store -> View
 
-        액션이 발생하면 디스페처가 그 액션들을 통제해서 스토어로 작업요청을 보낸다음 뷰로 랜더링을 해줌
-        뷰에서 액션이 생기는 경우 바로 스토어로 요청을 하는 구조가 아닌 디스페처로 작업요청을 보내서
-        디스페처가 다시 통제해서 스토어로 작업요청을 보낸후 뷰로 리랜더링을 하는 프로세스
-        * reducer : action이 발생하면 해당 객체를 받아서 처리하는 함수
+      Action : 데이터를 업데이트 해달라고 메시지를 보내면 액션 형태로 만들어서 Dispatcher로 보내줌
+      Dispatcher : Action을 읽고 어떤부분을 업데이트 할지 정해줌 (동기적으로 실행됨)
+      Store : 모든 상태와 관련된 로직을 갖고 있음
+      View : Store에서 보내주는 데이터를 처리해서 HTML로 바꿔서 보여줌
 
-4. Express?
+      Action이 발생하면 Dispatcher가 그 Action들을 통제해서 Store로 작업요청을 보낸다음 View로 랜더링을 해줌
+      View에서 Action이 생기는 경우 바로 Store로 요청을 하는 구조가 아닌 Dispatcher로 작업요청을 보내서
+      Dispatcher가 다시 통제해서 Store로 작업요청을 보낸후 뷰로 리랜더링을 하는 프로세스
+
+4. Node.js?
+    - 브라우저가 아닌 환경에서도 자바스크립트를 사용할수 있게 하는 자바스크립트 런타임
+    - http 서버를 직접 구현해서 돌려야됨
+
+5. Express?
     - 웹 어플리케이션을 만들때 필요한 많은 기능들이 이미 구현되어 있는 웹 프레임워크
+    - 예제
       var express = require('express');
       var app = express();
 
@@ -35,8 +41,31 @@
         console.log('Example App is listening on port 3000');
       });
 
-5. MongoDB?
-    - NoSQL : Not Only SQL이라는 의미로 기존의 관계형 DB의 한계를 극복하기 위해 만들어진 새로운 형태의 DB
-    - Document : MongoDB의 Document는 Key, Value 형식의 json 형태로 구성 되어있음
-    - Collection : Document 그룹, table과 비슷한 개념
-    - Database : Collection들을 감싸고 있는 컨테이너
+6. MongoDB?
+    - NoSQL : Not Only SQL이라는 의미로 기존의 관계지향적 DB의 한계를 극복하기 위해 만들어진 새로운 형태의 DB
+      1) RDB
+         기존의 데이터 베이스들은 데이터를 저장하려면 각 데이터별 컬럼이 있어야되고
+         한 레코드에만 데이터를 추가할 경우가 발생할때 다른 테이블을 하나더 만들어서 조인해서 써야됨
+
+      2) Mongo
+         {
+          "_id": ObjectId("5099803df3f4948bd2f98391"),
+          "username": "velopert",
+          "name": { first: "M.J.", last: "Kim" }
+         }
+         {
+          "_id": ObjectId("5099803df3f4948bd2f98391"),
+          "username": "velopert",
+          "name": { first: "M.J.", last: "Kim" },
+          "phone": "01023092158"
+         }
+    - 블로그 데이터베이스 예제
+    - MongoDB 구조
+      1) Document : MongoDB의 Document는 Key, Value 형식의 json 형태로 구성 되어있음
+      2) Collection : Document 그룹, table과 비슷한 개념
+      3) Database : Collection들을 감싸고 있는 컨테이너
+    - 간단한 문법
+      생성 : db.createCollection()
+      제거 : db.COLLECTION_NAME.drop()
+      추가 : db.COLLECTION_NAME.insert(document)
+      삭제 : db.COLLECTION_NAME.remove(document)
