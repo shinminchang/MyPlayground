@@ -4,6 +4,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { Badge } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Link } from 'react-router'
+import { BrowserHistory } from 'react-router'
+import styles from './App.css';
 
 class Header extends Component {
     constructor(props) {
@@ -11,21 +15,41 @@ class Header extends Component {
 
         this.toggle = this.toggle.bind(this);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            dropdownOpen: false
         };
     }
     toggle() {
         this.setState({
-            isOpen: !this.state.isOpen
+            isOpen: !this.state.isOpen,
+            dropdownOpen: !this.state.dropdownOpen
         });
     }
+
   render() {
     return (
       <div>
         <div>
+
             <Navbar color="faded" light toggleable>
                 <NavbarToggler right onClick={this.toggle} />
-                <NavbarBrand href="/index"><h1>Layout - Header</h1></NavbarBrand>
+                <NavbarBrand>
+                        <h1>Layout - Header</h1>
+                </NavbarBrand>
+
+                <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                    <DropdownToggle caret>
+                        Button Dropdown
+                    </DropdownToggle>
+                    <DropdownMenu>
+                        <DropdownItem header>Header</DropdownItem>
+                        <DropdownItem disabled>Action</DropdownItem>
+                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem>Another Action</DropdownItem>
+                    </DropdownMenu>
+                </ButtonDropdown>
+
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
@@ -39,7 +63,7 @@ class Header extends Component {
             </Navbar>
         </div>
         <div>
-          <h1>{this.props.title}</h1>
+          <h1 className="title">{this.props.title}</h1>
           {this.props.children}
         </div>
           <Navbar color="faded" light toggleable>

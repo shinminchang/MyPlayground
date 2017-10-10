@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import App from './App';
-import AddItem from './components/AddItem';
+import AddItem from './components/AddItem2';
 import IndexItem from './components/IndexItem';
 import EditItem from './components/EditItem';
-import Header from './components/Header';
+import Header from './components/Layout';
 
 ReactDOM.render(
   <Router>

@@ -10,10 +10,15 @@ class TableRow extends Component {
       this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    this.addItemService.deleteData(this.props.obj._id);
-  }
+    handleSubmit(event) {
+        if (confirm("삭제 하시겠습니까?") != 0) {
+            event.preventDefault();
+            this.addItemService.deleteData(this.props.obj._id);
+            document.location.reload();
+        } else {
+
+        }
+    }
   render() {
     return (
         <tr>

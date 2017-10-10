@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ItemService from './ItemService';
 import axios from 'axios';
 import TableRow from './TableRow';
-import Header from '../components/Header';
+import Header from './Layout';
 
 class IndexItem extends Component {
 
@@ -52,7 +52,7 @@ class IndexItem extends Component {
   }
 
   IndexItem.defaultProps = {
-    title: "inex Page"
+    title: "index Page"
   };
 
 export default IndexItem;

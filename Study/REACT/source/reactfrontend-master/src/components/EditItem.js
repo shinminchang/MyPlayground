@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ItemService from './ItemService';
-import Header from '../components/Header';
+import Header from './Layout';
 import { BrowserHistory } from 'react-router'
 
 class EditItem extends Component {
