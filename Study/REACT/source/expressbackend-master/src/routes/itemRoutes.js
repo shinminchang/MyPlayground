@@ -13,7 +13,7 @@ itemRouter.route('/add/post').post(function (req, res) {
     res.status(200).json({Item: 'Item added successfully'});
     })
     .catch(err => {
-    res.status(400).send("unable to save to database");
+    res.stat,us(400).send("unable to save to database");
     });
 });
 

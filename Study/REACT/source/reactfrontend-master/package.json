@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "^4.0.0-beta",
     "react": "^15.6.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-addons-transition-group": "^15.6.2",
@@ -15,7 +15,7 @@
     "reactstrap": "^4.8.0"
   },
   "devDependencies": {
-    "eslint": "^4.7.2"
+    "eslint": "^4.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
