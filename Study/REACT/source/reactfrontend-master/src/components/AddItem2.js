@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemService from './ItemService';
-import Header from '../components/Header';
+import Header from '../components/Layout';
 
 class AddItem extends Component {
 
@@ -11,6 +11,7 @@ class AddItem extends Component {
 
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.Back = this.Back.bind(this);
     }
 
     handleChange(event) {
@@ -20,8 +21,13 @@ class AddItem extends Component {
     handleSubmit(event) {
       event.preventDefault();
       this.addItemService.sendData(this.state.value);
-      this.props.history.push('/index');
+      //this.props.history.push('/index');
+      document.location.href = "/index";
     }
+
+    Back() {
+        this.props.history.push('/index');
+      }
 
     render() {
       return (
@@ -32,6 +38,7 @@ class AddItem extends Component {
                 Add Item:
                 <input type="text" value={this.state.value} onChange={this.handleChange} className="form-control"/>
               </label><br/>
+              <input type="button" value="back" className="btn btn-primary" onClick={this.Back}/>
               <input type="submit" value="Submit" className="btn btn-primary"/>
             </form>
           </div>
