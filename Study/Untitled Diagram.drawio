@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-02T04:14:45.698Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36" etag="4dHd98ysIhGHlpbsih0G" version="14.2.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-02T04:16:50.805Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36" etag="bT-nucUZjq03nM-SQvx9" version="14.2.9" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2489" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -214,7 +214,7 @@
         <mxCell id="qPqf39v8g5V2tvZ999Q6-86" value="* components/common/InputForm.vue 생성&lt;br&gt;&lt;br&gt;form.ts를 import해서 createForm호출 이후&lt;br&gt;폼 생성이 완료되면 createValidation을 호출 함" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-149.5" y="320" width="270" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="qPqf39v8g5V2tvZ999Q6-87" value="* use/common/form.ts 생성" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="qPqf39v8g5V2tvZ999Q6-87" value="* use/common/form.ts 생성&lt;br&gt;&lt;br&gt;createForm() - type : create / update" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-210" y="900" width="391" height="60" as="geometry" />
         </mxCell>
       </root>
